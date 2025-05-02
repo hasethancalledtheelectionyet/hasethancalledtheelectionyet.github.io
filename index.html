@@ -9,74 +9,128 @@
 </head>
 
 <script>
+	
+// Set time of when calls are made	
+	var ethanCallTime = new Date("May 20, 2025 18:30:00 GMT+1000").getTime();
+	var antonyCallTime = new Date("May 20, 2025 18:40:00 GMT+1000").getTime();		
+	
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2030 15:37:25").getTime();
-var pollsCloseDate = new Date("May 3, 2025 08:00:00 GMT+0100").getTime();
+	var pollsCloseDate = new Date("May 3, 2025 18:00:00 GMT+1000").getTime();  // Need to double check should be local time
 
 // Update the count down every 1 second
 var x = setInterval(function() {
 
   // Get today's date and time
   var now = new Date().getTime();
- 
   
-  // Find the distance between now and the count down date
-  var timeSinceClosed = (now - pollsCloseDate);
-  var timeTillClosed = pollsCloseDate - now;
-  
+
   if (now > pollsCloseDate) {
-	  var days2 = Math.floor(timeTillClosed / (1000 * 60 * 60 * 24));
-	  var hours2 = Math.floor((timeTillClosed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	  var minutes2 = Math.floor((timeTillClosed % (1000 * 60 * 60)) / (1000 * 60));
-	  var seconds2 = Math.floor((timeTillClosed % (1000 * 60)) / 1000);
+	  // Find the duration between now and the count down date
+	  var timeSinceClosed = (now - pollsCloseDate);
+	  
+	  var days = Math.floor(timeSinceClosed / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((timeSinceClosed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((timeSinceClosed % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((timeSinceClosed % (1000 * 60)) / 1000);
 
-	  // Display the result in the element with id="demo"
-	  document.getElementById("timeClosedID").innerHTML = "Polls have been closed for: " + days2 + "d " + hours2 + "h "
-	  + minutes2 + "m " + seconds2 + "s ";
+	  // Display the main timer
+	  document.getElementById("mainTimerDisplayID").innerHTML = "Polls have been closed for: " + days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
 	  ;
+	  
+	  //Check Ethan Call
+	  if (ethanCallTime < now) {
+		  document.getElementById("ethanCallFlagIDBig").innerHTML = "Yes";
+		  document.getElementById("ethanCallFlagID").innerHTML = "Yes";
+		  
+		  var ethanTimeToCall = (ethanCallTime - pollsCloseDate);
+		  
+		  var days = Math.floor(ethanTimeToCall / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((ethanTimeToCall % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((ethanTimeToCall % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((ethanTimeToCall % (1000 * 60)) / 1000);
+		  
+		  document.getElementById("ethanCallFlagTime").innerHTML = days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
+		
+	  } else {
+		  document.getElementById("ethanCallFlagIDBig").innerHTML = "No";
+		  document.getElementById("ethanCallFlagID").innerHTML = "No";
+		
+	  }
+	  
+	  //Check Anthony Call
+	  if (antonyCallTime < now) {
+		  document.getElementById("antonyCallFlagID").innerHTML = "Yes";
+		  
+		  var antonyTimeToCall = (antonyCallTime - pollsCloseDate);
+		  
+		  var days = Math.floor(antonyTimeToCall / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((antonyTimeToCall % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((antonyTimeToCall % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((antonyTimeToCall % (1000 * 60)) / 1000);
+		  
+		  document.getElementById("antonyCallFlagTime").innerHTML = days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
+		
+	  } else {
+		  document.getElementById("antonyCallFlagID").innerHTML = "No";
+		
+	  }
+	  
   }
   
+  // Polls open mode
   if (now < pollsCloseDate) {
+	  
+	  // Ethan isn't an idiot he can't call it if polls aren't closed
+	  document.getElementById("ethanCallFlagIDBig").innerHTML = "No";
+	  document.getElementById("ethanCallFlagID").innerHTML = "No";
+	  document.getElementById("antonyCallFlagID").innerHTML = "No";
+	  
+	  
+	  
+	  var timeTillClosed = pollsCloseDate - now;
+	  
 	  // Time calculations for days, hours, minutes and seconds
-	  var days2 = Math.floor(timeTillClosed / (1000 * 60 * 60 * 24));
-	  var hours2 = Math.floor((timeTillClosed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	  var minutes2 = Math.floor((timeTillClosed % (1000 * 60 * 60)) / (1000 * 60));
-	  var seconds2 = Math.floor((timeTillClosed % (1000 * 60)) / 1000);
+	  var days = Math.floor(timeTillClosed / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((timeTillClosed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((timeTillClosed % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((timeTillClosed % (1000 * 60)) / 1000);
 
-	  // Display the result in the element with id="demo"
-	  document.getElementById("timeClosedID").innerHTML = "Polls close in: " + days2 + "d " + hours2 + "h "
-	  + minutes2 + "m " + seconds2 + "s ";
+	  // Display the main timer
+	  document.getElementById("mainTimerDisplayID").innerHTML = "Polls close in: " + days + "d " + hours + "h "
+	  + minutes + "m " + seconds + "s ";
   }
 
-  // // Time calculations for days, hours, minutes and seconds
-  // var days2 = Math.floor(timeTillClosed / (1000 * 60 * 60 * 24));
-  // var hours2 = Math.floor((timeTillClosed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  // var minutes2 = Math.floor((timeTillClosed % (1000 * 60 * 60)) / (1000 * 60));
-  // var seconds2 = Math.floor((timeTillClosed % (1000 * 60)) / 1000);
-  //
-  // // Display the result in the element with id="demo"
-  // document.getElementById("timeClosedID").innerHTML = "Polls close in: " + days2 + "d " + hours2 + "h "
-  // + minutes2 + "m " + seconds2 + "s ";
-
-  // If the count down is finished, write some text
-  // if (timeTillClosed < 0) {
-  //   clearInterval(x);
-  //   document.getElementById("timeClosedID").innerHTML = "  ";
-  // }
 }, 1000);
 </script>
 
 <body>
-<h2>Has Ethan Called The Election Yet?</h2>
-<h1>No.</h1>
+<h3>Has Ethan Called The Election Yet?</h3>
+<h1><p id="ethanCallFlagIDBig"></p></h1>
 
 
+<!-- Display main timer for polls open/closed -->
+<p id="mainTimerDisplayID"></p>
 
-
-
-<p id="timeClosedID"></p>
-
-
+<table>
+  <tr>
+    <th>Expert</th>
+    <th>Have they called it?</th>
+    <th>Time taken to call</th>
+  </tr>
+  <tr>
+    <td>Ethan</td>
+    <td><p id="ethanCallFlagID"></p></td>
+    <td><p id="ethanCallFlagTime"></p></td>
+  </tr>
+  <tr>
+    <td>Antony</td>
+    <td><p id="antonyCallFlagID"></p></td>
+    <td><p id="antonyCallFlagTime"></p></td>
+  </tr>
+</table>
 
 </body>
 </html>
