@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HECTEY Input Calls</title>
+	<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+
+<script>
+
+</script>
+
+<body>
+
+<form>
+
+<h3>Enter calls. This goes live so don't mess with it</h3>
+<p>
+<label for="meeting-time">Ethan Call</label>
+
+<input
+  type="datetime-local"
+  id="meeting-time"
+  name="meeting-time"
+  value="2018-06-12T19:30"
+  min="2018-06-07T00:00"
+  max="2018-06-14T00:00" />
+  
+  <label>Update Ethan?</label>
+  <label><input name="updateEthan" type="radio" value="yesEthan" />Update</label> 
+  <label><input checked="checked" name="updateEthan" type="radio" value="noEthan" />Don't Update</label> 
+  
+
+<p/>
+<p>
+
+<label for="meeting-time">Anthony Call</label>
+
+<input
+  type="datetime-local"
+  id="meeting-time"
+  name="meeting-time"
+  value="2018-06-12T19:30"
+  min="2018-06-07T00:00"
+  max="2018-06-14T00:00" />
+  
+
+  <label>Update Antony?</label>
+  <label><input name="updateAntony" type="radio" value="yesAntony" />Update</label> 
+  <label><input checked="checked" name="updateAntony" type="radio" value="noAntony" />Don't Update</label> 
+  
+</p>
+ <p>
+  <label>Password</label>
+  <input type="text" name="passcode">
+  </p>  
+  
+  
+<button>
+  Submit form
+</button>
+  
+</form>
+
+</body>
+</html>
+
+
+
