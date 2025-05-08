@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Has Ethan Called The Conclave Yet?</title>
+    <title>Has Ethan Called The Election Yet?</title>
 	<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 
@@ -16,11 +16,11 @@
 	}, 30000);	
 	
 // Set time of when calls are made	
-	var ethanCallTime = new Date("May 15, 2025 20:18:30 GMT+0200").getTime();
-	var antonyCallTime = new Date("May 15, 2025 20:26:00 GMT+0200").getTime();		
+	var ethanCallTime = new Date("May 3, 2025 20:18:30 GMT+1000").getTime();
+	var antonyCallTime = new Date("May 3, 2025 20:26:00 GMT+1000").getTime();		
 	
 // Set the date we're counting down to
-	var pollsCloseDate = new Date("May 7, 2025 14:00:00 GMT+0200").getTime();  // Need to double check should be local time
+	var pollsCloseDate = new Date("May 3, 2025 18:00:00 GMT+1000").getTime();  // Need to double check should be local time
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -112,7 +112,7 @@ var x = setInterval(function() {
 </script>
 
 <body>
-<h3>Has Ethan Called The Conclave Yet?</h3>
+<h3>Has Ethan Called The Election Yet?</h3>
 <h1><p id="ethanCallFlagIDBig"></p></h1>
 
 
@@ -131,7 +131,7 @@ var x = setInterval(function() {
     <td><p id="ethanCallFlagTime"></p></td>
   </tr>
   <tr>
-    <td>Chimeny</td>
+    <td>Antony</td>
     <td><p id="antonyCallFlagID"></p></td>
     <td><p id="antonyCallFlagTime"></p></td>
   </tr>
